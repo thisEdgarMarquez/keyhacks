@@ -14,6 +14,7 @@ KeyHacks shows ways in which particular API keys found on a Bug Bounty Program c
 - [Amplitude API Keys](#Amplitude-API-Keys)
 - [Asana Access token](#Asana-Access-Token)
 - [AWS Access Key ID and Secret](#AWS-Access-Key-ID-and-Secret)
+- [AWS Simple Email Service](#AWS-Simple-Email-Service)
 - [Azure Application Insights APP ID and API Key](#Azure-Application-Insights-APP-ID-and-API-Key)
 - [Bazaarvoice Passkey](#Bazaarvoice-Passkey)
 - [Bing Maps API Key](#Bing-Maps-API-Key)
@@ -258,6 +259,37 @@ Response indicating invalid credentials:
 ## [Dropbox API](https://www.dropbox.com/developers/documentation/http/documentation)
 ```
 curl -X POST https://api.dropboxapi.com/2/users/get_current_account --header "Authorization: Bearer TOKEN_HERE"
+```
+## [AWS Simple Email Service]
+
+Para hacer uso del servicio de Simple Email Service se debe encodear el usuario y la contraseña en base64, se puede usar los siguientes comandos
+```bash
+echo -n "USER|PASSWORD" | openssl enc -base64
+```
+
+Luego se crear un archivo de texto con el siguiente codigo y cambiando los parametros marcados
+```
+EHLO example.com
+AUTH LOGIN
+Base64EncodedSMTPUserName#cambiar
+Base64EncodedSMTPPassword#cambiar
+MAIL FROM: sender@example.com#cambiar
+RCPT TO: recipient@example.com#cambiar
+DATA
+X-SES-CONFIGURATION-SET: ConfigSet#Si no se tiene la configuracion, se puede elimianr esta linea
+From: Sender Name <sender@example.com>#cambiar
+To: recipient@example.com#cambiar
+Subject: Amazon SES SMTP Test
+
+This message was sent using the Amazon SES SMTP interface.
+.
+QUIT
+```
+
+Luego se ejecuta el siguiente comando para hacer el envio del correo 
+
+```bash
+openssl s_client -crlf -quiet -connect SMTP-HOST:SMTP-PORT < archivo-creado
 ```
 
 ## [AWS Access Key ID and Secret](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
