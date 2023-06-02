@@ -23,6 +23,7 @@ KeyHacks shows ways in which particular API keys found on a Bug Bounty Program c
 - [BrowserStack Access Key](#BrowserStack-Access-Key)
 - [Buildkite Access token](#Buildkite-Access-token)
 - [ButterCMS API Key](#ButterCMS-API-Key)
+- [Brightcove Service](#Brightcove-Service)
 - [Calendly API Key](#Calendly-API-Key)
 - [CircleCI Access Token](#CircleCI-Access-Token)
 - [Cypress record key](#Cypress-record-key)
@@ -260,7 +261,7 @@ Response indicating invalid credentials:
 ```
 curl -X POST https://api.dropboxapi.com/2/users/get_current_account --header "Authorization: Bearer TOKEN_HERE"
 ```
-## [AWS Simple Email Service]
+## [AWS Simple Email Service](https://docs.aws.amazon.com/ses/latest/dg/send-email-smtp-client-command-line.html)
 
 Para hacer uso del servicio de Simple Email Service se debe encodear el usuario y la contraseña en base64, se puede usar los siguientes comandos
 ```bash
@@ -547,6 +548,20 @@ Visit the following URL to check for validity:
 
 ```
 https://api2.branch.io/v1/app/KEY_HERE?branch_secret=SECRET_HERE
+```
+
+## [BrightCove Service](https://apis.support.brightcove.com/getting-started/index.html)
+Para hacer uso de la api de este servicio necesitamos generar un Token Bearer mediante el username y la password de la cuenta. Para esto realizaremos la siguiente peticion
+
+```curl
+curl --location --request POST 'https://oauth.brightcove.com/v4/access_token?grant_type=client_credentials' \
+--header 'Authorization: Basic UsernameAndPasswordBase64Encode' 
+```
+Esto nos regresara una respuest JSON con un token Bearer, el cual podremos usar en la siguiente peticion para obtener informacion como prueba de concepto
+
+```curl
+curl --location --request GET 'https://ingestion.api.brightcove.com/v1/accounts/6181004287001/configuration' \
+--header 'Authorization: Bearer TokenBearer'
 ```
 
 ## [Bing Maps API Key](https://docs.microsoft.com/en-us/bingmaps/rest-services/locations/find-a-location-by-address)
