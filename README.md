@@ -50,8 +50,6 @@ KeyHacks shows ways in which particular API keys found on a Bug Bounty Program c
 - [HubSpot API key](#Hubspot-API-key)
 - [Infura API key](#Infura-API-key)
 - [Instagram Access Token](#Instagram-Access-Token)
-- [Instagram Basic Display API](#Instagram-Basic-Display-API-Access-Token)
-- [Instagram Graph API](#Instagram-Graph-Api-Access-Token)
 - [Ipstack API Key](#Ipstack-API-Key)
 - [Iterable API Key](#Iterable-API-Key)
 - [JumpCloud API Key](#JumpCloud-API-Key)
@@ -658,13 +656,7 @@ curl -H "Authorization: Bearer <ACCESS_TOKEN>" https://api.spotify.com/v1/me
 ## [Instagram Basic Display API Access Token](https://developers.facebook.com/docs/instagram-basic-display-api/getting-started)
 E.g.: IGQVJ...
 ```
-curl -X GET 'https://graph.instagram.com/{user-id}?fields=id,username&access_token={access-token}'
-```
-
-## [Instagram Graph API Access Token](https://developers.facebook.com/docs/instagram-api/getting-started)
-E.g.: EAAJjmJ...
-```
-curl -i -X GET 'https://graph.facebook.com/v8.0/me/accounts?access_token={access-token}'
+curl --location --request GET 'https://graph.instagram.com/me?fields=id,username&access_token={ACCESS-TOKEN}'
 ```
 
 ## [Gitlab personal access token](https://docs.gitlab.com/ee/api/README.html#personal-access-tokens)
