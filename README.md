@@ -59,6 +59,7 @@ KeyHacks shows ways in which particular API keys found on a Bug Bounty Program c
 - [Loqate API Key](#Loqate-API-key)
 - [MailChimp API Key](#MailChimp-API-Key)
 - [MailGun Private Key](#MailGun-Private-Key)
+- [Marketo API Key](#Marketo-API-Key)
 - [Mapbox API key](#Mapbox-API-Key)
 - [Microsoft Azure Tenant](#Microsoft-Azure-Tenant)
 - [Microsoft Shared Access Signatures (SAS)](#Microsoft-Shared-Access-Signatures-(SAS))
@@ -421,6 +422,16 @@ If valid, test further to see if it's an [admin key](https://docs.newrelic.com/d
 ```
 curl -X POST https://api.heroku.com/apps -H "Accept: application/vnd.heroku+json; version=3" -H "Authorization: Bearer API_KEY_HERE"
 ```
+
+## [Marketo API key](https://developers.marketo.com/rest-api/)
+
+Con los parametros client secret, client id y host es posible generar un token bearer para hacer uso de las api key en la api rest del servicio
+
+``` bash
+curl --location 'https://874-HNA-786.mktorest.com/identity/oauth/token?client_id=feb44a5b-334c-439e-9986-ae300e389a2a&client_secret=MDe0ZPKYj6VgcMD3NrBJfR9hILWwL0qs&grant_type=client_credentials' \
+--header 'Accept: application/json'
+```
+
 ## [Mapbox API key](https://docs.mapbox.com/api/)
 
 Mapbox secret keys start with `sk`, rest start with `pk` (public token), `sk` (secret token), or `tk` (temporary token).
